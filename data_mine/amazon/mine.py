@@ -24,7 +24,9 @@ neg_file = open('data_mine/amazon/n.txt', 'w')
 lines = myfile.readlines()
 
 before = datetime.now()
+print("Starting process")
 for i in range(0,4000):
+    print("Step", i)
     line = lines[i]
     if(detect(line) == 'en'):
         if(line.find('__label__1 ') != -1):
@@ -36,5 +38,5 @@ for i in range(0,4000):
             line = line.replace('__label__2 ','')    
             clean = remove_stopwords(clean_line(line))
             pos_file.write(clean)
-
+print("Process finalized")
 print((datetime.now() - before)*100)            
