@@ -25,9 +25,9 @@ lines = myfile.readlines()
 
 before = datetime.now()
 print("Starting process")
-for i in range(0,4000):
-    print("Step", i)
-    line = lines[i]
+i = 0
+for line in lines:
+    print("Step", i)    
     if(detect(line) == 'en'):
         if(line.find('__label__1 ') != -1):
             line = line.replace('__label__1 ','')    
@@ -38,5 +38,6 @@ for i in range(0,4000):
             line = line.replace('__label__2 ','')    
             clean = remove_stopwords(clean_line(line))
             pos_file.write(clean)
+    i += 1            
 print("Process finalized")
 print((datetime.now() - before)*100)            
